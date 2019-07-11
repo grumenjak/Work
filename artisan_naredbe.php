@@ -12,3 +12,6 @@ php artisan make:model Post
 
 Kreiranje kontrolera u app/host/controllers folderu
 php artisan make:controller PostController
+
+KReiranje autorizacijskog modula
+php artisan make:auth

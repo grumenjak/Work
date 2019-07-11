@@ -46,11 +46,15 @@ $posts = [
 });
 
 //Dohvaćanje pojedinog posta
-Route::get('/posts', 'PostController@index');
-Route::get('/posts/{id}', 'PostController@show');
+Route::get('/posts', 'PostController@index')->name('posts.index');
+Route::get('/posts/{id}', 'PostController@show')->name('posts.show');
 
 
 //  users.show = /users/show
 Route::get('/users', function () {
-    return view('users.show');
+    return view('users.index');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

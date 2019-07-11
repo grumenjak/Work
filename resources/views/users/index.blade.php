@@ -2,6 +2,6 @@
     
 @section('content')
 
-    Jedan korisnik
+    Svi korisnici
 
 @endsection
