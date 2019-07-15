@@ -10,8 +10,11 @@ Kreiranje modela 'Post' u app folderu
 Model je konekcija/veza prema bazi
 php artisan make:model Post
 
-Kreiranje kontrolera u app/host/controllers folderu
+Kreiranje kontrolera u app/http/controllers folderu
 php artisan make:controller PostController
 
 KReiranje autorizacijskog modula
 php artisan make:auth
+
+Kreiranje kontrolera u app/http/controllers folderu - napuni controller sa metodama (naredba -r)
+php artisan make:controller UserController -r

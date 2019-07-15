@@ -51,10 +51,29 @@ Route::get('/posts/{id}', 'PostController@show')->name('posts.show');
 
 
 //  users.show = /users/show
-Route::get('/users', function () {
-    return view('users.index');
-});
+//prikazuje sve usere
+Route::get('/users', 'UserController@index')->name('users.index');
 
+//Kreiranje pojedinog usera - prikaz forme za kreiranje usera 
+Route::get('/users/create', 'UserController@create')->name('users.create');
+
+//Spremi usera u bazu 
+Route::post('/users', 'UserController@store')->name('users.store');
+
+//prikazuje pojedinog usera - {user} je wildcard
+Route::get('/users/{user}', 'UserController@show')->name('users.show');
+
+
+//editira pojedinog usera - prikaz forme za uređivanje usera
+Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
+
+//briše pojedinog usera - {user} je wildcard
+Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
+
+
+
+
+    
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
