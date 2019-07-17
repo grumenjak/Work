@@ -11,7 +11,7 @@
                     </h2>
                     <p class="blog-post-meta">
                         <!-- https://carbon.nesbot.com/docs/#api-formatting -->
-                        {{ $post->created_at->toFormattedDateString() }} by <a href="#">Mark</a>
+                        {{ $post->created_at->toFormattedDateString() }} by <a href="#">{{ $post->user->name }}</a>
                     </p>
                     <article class="text-justify">
                         {{ $post->body }}

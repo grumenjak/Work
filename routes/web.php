@@ -45,30 +45,38 @@ $posts = [
   //return view('welcome', compact('posts'));-------------- Prebačeno u PostController.php 
 });
 
+// Kreiranje POSTA
+Route::get('/posts/create', 'PostController@create')->name('posts.create');
+
 //Dohvaćanje pojedinog posta
 Route::get('/posts', 'PostController@index')->name('posts.index');
 Route::get('/posts/{id}', 'PostController@show')->name('posts.show');
 
 
+
+// Spremi POST
+
+Route::post('/post', 'PostController@store')->name('posts.store');
+
+
+
 //  users.show = /users/show
-//prikazuje sve usere
+// prikaži sve usere
 Route::get('/users', 'UserController@index')->name('users.index');
-
-//Kreiranje pojedinog usera - prikaz forme za kreiranje usera 
+// prikaži formu za kreiranje usera
 Route::get('/users/create', 'UserController@create')->name('users.create');
-
-//Spremi usera u bazu 
+// spremi usera u bazu
 Route::post('/users', 'UserController@store')->name('users.store');
-
-//prikazuje pojedinog usera - {user} je wildcard
+// prikaži formu za uređivanje usera
+Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
+// spremi uređenog usera u bazu
+Route::patch('/users/{user}', 'UserController@update')->name('users.update');
+// obriši usera
+Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
+// prikaži jednog usera
 Route::get('/users/{user}', 'UserController@show')->name('users.show');
 
 
-//editira pojedinog usera - prikaz forme za uređivanje usera
-Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
-
-//briše pojedinog usera - {user} je wildcard
-Route::delete('/users/{user}', 'UserController@destroy')->name('users.destroy');
 
 
 

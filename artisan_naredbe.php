@@ -18,3 +18,7 @@ php artisan make:auth
 
 Kreiranje kontrolera u app/http/controllers folderu - napuni controller sa metodama (naredba -r)
 php artisan make:controller UserController -r
+
+php artisan migrate:refresh
+
+composer require cviebrock/eloquent-sluggable:^4.8

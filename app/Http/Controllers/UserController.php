@@ -7,6 +7,14 @@ use App\User;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        //ovaj index sse odnosi na users\index.blade.php - tamo ne treba autentifikacija
+        $this->middleware('auth')->except('index');
+                                    //only('index) -znači da primjeni samo na toj stranici
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -82,9 +90,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(user $user)
     {
-        DOVRŠITOI
+        //$user = User::find($id);
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -94,9 +103,22 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, user $user)
     {
-        DOVRŠITOI
+                //dd($request);
+                $request->validate([
+                    'name'      => 'required|string|max:255',
+                    'email'     => 'required|email|max:255|unique:users,email,'.$user->id,
+                    'password'  => 'nullable|min:3'
+                ]);
+                //$user =User::find($id);
+                $user->name = $request['name'];
+                $user->email = $request['email'];
+                if (!empty($request['password'])) {
+                    $user->password = bcrypt($request['password']);
+                }
+                $user->save();
+                return redirect()->route('users.index')->withFlashMessage("Korisnik $user->name uspješno je ažuriran.");
     }
 
     /**
@@ -105,8 +127,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(user $user)
     {
-        DOVRŠITOI
+        //$user = User::find($id);
+        $user->delete();
+        return redirect()->route('users.index')->withFlashMessage("Korisnik $user->name obrisan je uspješno.");
     }
 }

@@ -10,7 +10,7 @@
 
     <p class="blog-post-meta">
         <!-- https://carbon.nesbot.com/docs/#api-formatting -->
-        {{ $post->created_at->toFormattedDateString() }} by <a href="#">Mark</a>
+        {{ $post->created_at->toFormattedDateString() }} by<a href="#">{{ $post->user->name }}</a>
     </p>
     
     <article class="text-justify">
@@ -18,5 +18,14 @@
     </article>
 
 </div>
+
+<form action="" method="post"></form>
+    <div class="float-right">
+        <a href="" class="btn btn-info">Uredi</a>
+        <button class="btn btn-danger">Obriši</button>
+    </div>
+
+<a href="" class="btn btn-primary">Natrag</a>
+</form>
 
 @endsection
