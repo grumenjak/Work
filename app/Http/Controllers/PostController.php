@@ -46,6 +46,15 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')->withFlashMessage('Objava je dodana uspješno');
   }
+  
+  public function destroy($id)
+  {
+      $post = Post::find($id);
+      $post->delete();
+      return redirect()->route('posts.index')->withFlashMessage("Post $post->title obrisan je uspješno.");
+  }
+
+  
 
 
 

@@ -58,6 +58,9 @@ Route::get('/posts/{id}', 'PostController@show')->name('posts.show');
 
 Route::post('/post', 'PostController@store')->name('posts.store');
 
+// obriši Post
+Route::delete('/posts/{id}', 'PostController@destroy')->name('posts.destroy');
+
 
 
 //  users.show = /users/show

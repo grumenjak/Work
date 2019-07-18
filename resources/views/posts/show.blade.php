@@ -19,13 +19,15 @@
 
 </div>
 
-<form action="" method="post"></form>
-    <div class="float-right">
-        <a href="" class="btn btn-info">Uredi</a>
-        <button class="btn btn-danger">Obriši</button>
-    </div>
+<form action="{{ route('posts.destroy', $post->id)  }}" method="post"></form>
+        @method('DELETE')
+        @csrf 
+        <div class="float-right">
+            <a href="" class="btn btn-info">Uredi</a>
+            <button class="btn btn-danger">Obriši</button>
+         </div>
 
-<a href="" class="btn btn-primary">Natrag</a>
+<a href="{{  route('posts.index') }}" class="btn btn-primary">Natrag</a>
 </form>
 
 @endsection

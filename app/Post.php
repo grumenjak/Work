@@ -34,4 +34,10 @@ class Post extends Model
             ]
         ];
     }
+
+        //$user->posts  
+    //dohvati sve postove za usera
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
 }
