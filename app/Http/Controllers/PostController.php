@@ -54,7 +54,32 @@ class PostController extends Controller
       return redirect()->route('posts.index')->withFlashMessage("Post $post->title obrisan je uspješno.");
   }
 
+  public function edit($id)
+  {
+      $post = Post::find($id);
+      return view('posts.edit', compact('post'));
+  }
   
+  public function update(Request $request, post $post)
+  {
+              //dd($request);
+              $request->validate([
+                  'title' => 'required|string|max:255',
+                  'body' => 'required|min:3|max:65535'.$post->id
+               
+
+
+              ]);
+              //$user =User::find($id);
+              //$post->id = 6;
+              $post->title = $request['title'];
+              $post->body = $request['body'];
+              $post->user_id = auth()->id();
+
+
+              $post->save();
+              return redirect()->route('posts.index')->withFlashMessage("$post->title uspješno je ažuriran.");
+  }
 
 
 

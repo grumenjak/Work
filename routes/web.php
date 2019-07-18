@@ -61,6 +61,13 @@ Route::post('/post', 'PostController@store')->name('posts.store');
 // obriši Post
 Route::delete('/posts/{id}', 'PostController@destroy')->name('posts.destroy');
 
+// prikaži formu za uređivanje POSTA
+Route::get('/posts/{id}/edit', 'PostController@edit')->name('posts.edit');
+
+// spremi uređenog POST u bazu
+Route::patch('/posts/{id}', 'PostController@update')->name('posts.update');
+
+
 
 
 //  users.show = /users/show

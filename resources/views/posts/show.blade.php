@@ -19,11 +19,11 @@
 
 </div>
 
-<form action="{{ route('posts.destroy', $post->id)  }}" method="post"></form>
+<form action="{{ route('posts.destroy', $post->id)  }}" method="post">
         @method('DELETE')
         @csrf 
         <div class="float-right">
-            <a href="" class="btn btn-info">Uredi</a>
+            <a href="{{ route('posts.edit', $post->id)  }}" class="btn btn-info">Uredi</a>
             <button class="btn btn-danger">Obriši</button>
          </div>
 
